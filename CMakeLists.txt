@@ -199,11 +199,12 @@ set(LIBSOUNDIO_LIBS
 
 if(MSVC)
     set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} /Wall")
-    set(LIB_CFLAGS "/TP /W4")
+    set(LIB_CFLAGS "/W4")
+    set_property(SOURCE ${LIBSOUNDIO_SOURCES} PROPERTY LANGUAGE CXX) # Workaround missing stdatomic.
     set(EXAMPLE_CFLAGS "/W4")
     set(TEST_CFLAGS "${LIB_CFLAGS}")
     set(TEST_LDFLAGS " ")
-    set(LIBM " ")
+    set(LIBM "")
 else()
     set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -Werror -pedantic")
     set(LIB_CFLAGS "-std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces")
