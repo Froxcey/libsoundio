@@ -8,7 +8,9 @@
 #include "soundio_private.h"
 #include "util.h"
 #include "os.h"
+#ifndef ZIG_BUILD
 #include "config.h"
+#endif
 
 #include <string.h>
 #include <assert.h>
